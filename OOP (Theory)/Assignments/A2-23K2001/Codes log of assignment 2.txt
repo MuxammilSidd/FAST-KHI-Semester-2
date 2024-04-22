@@ -1,0 +1,978 @@
+Q2:
+//23K2001 Muzammil Q2
+#include<iostream>
+using namespace std;
+
+class player{
+protected:
+int playerid, health;
+string playername;
+
+public:
+player(int id, string name) : playerid(id), playername(name){
+    health = 100;
+}
+
+};
+
+class weapon{
+protected:
+string *weaponlist;
+
+public:
+weapon(string alloted[]){
+    int n=0;
+    while(alloted[n]!="")
+    {n++;}
+    if(n>=5)
+    {
+        weaponlist = new string[n];
+        for(int i=0;i<n;i++)
+            weaponlist[i] = alloted[i];
+    }
+    else
+    {
+        cout<<"Weapons list should contain atleast 5 or more weapons!\n";
+        cout<<"please allot "<<5-n<<" more weapons to complete 5 weapons: "<<endl;
+        
+        // string *previous = new string[n];
+        // previous = weaponlist;
+        // delete[] weaponlist;
+        // weaponlist = previous; 
+        
+        // for(int i=n;i<5;i++)
+        // {
+        //     cin>>weaponlist[i];
+        // }
+
+        weaponlist = new string[5];
+        for(int i=0;i<n;i++)
+            weaponlist[i] = alloted[i];
+
+        for(int i=n;i<5;i++)
+            cin>>weaponlist[i];
+            
+        n=5;
+    }
+
+    cout<<"displaying weapons:"<<endl;
+    for(int i=0;i<n;i++)
+    cout<<weaponlist[i]<<endl;
+
+    // weaponlist = new string[n];
+}
+
+
+};
+
+class character : public player, weapon{
+
+    
+};
+
+class enemy : public player, weapon{
+
+
+};
+int main()
+{
+    cout<<"23K2001 - Muzammil\n\n"<<endl;
+    string myweapons[] = {"dagger","pistol","ak47"};
+    weapon w(myweapons);
+    return 0;
+}
+
+-------------------------------------------------------------------------
+Q2 version 2
+//23K2001 Muzammil Q2
+#include<iostream>
+using namespace std;
+
+class player{
+protected:
+int playerid, health;
+string playername;
+
+public:
+player(int id, string name) : playerid(id), playername(name){
+    health = 100;
+}
+void setHealth(int h)
+{
+    health += h;
+}
+int getHealth()
+{
+    return health;
+}
+void display()
+{
+    cout<<"\nPlayer Info:"<<endl;
+    cout<<"PlayerID: "<<playerid<<endl;
+    cout<<"Player Name: "<<playername<<endl;
+}
+};
+
+class weapon{
+protected:
+string *weaponlist;
+int n;
+public:
+weapon(string alloted[], int n) : n(n){
+    if(n>=5)
+    {
+        weaponlist = new string[n];
+        for(int i=0;i<n;i++)
+            weaponlist[i] = alloted[i];
+    }
+    else
+    {
+        cout<<"Weapons list should contain atleast 5 or more weapons!\n";
+        cout<<"please allot "<<5-n<<" more weapons to complete 5 weapons: "<<endl;
+
+        weaponlist = new string[5];
+        for(int i=0;i<n;i++)
+            weaponlist[i] = alloted[i];
+
+        for(int i=n;i<5;i++)
+            cin>>weaponlist[i];
+
+        this->n=5;
+    }
+}
+void displayweapons()
+{
+    for(int i=0;i<n;i++)
+    cout<<i+1<<". "<<weaponlist[i]<<endl;
+}
+void use()
+{
+    cout<<"\nSelect a weapon: "<<endl;
+    displayweapons();
+    int x;
+    cin>>x;
+    while(x>n || x==0)
+    {
+        cout<<"Invalid weapon #, select again: ";
+        cin>>x;
+    }
+    cout<<"\nSelected weapon#"<<x<<" - "<<weaponlist[x-1]<<endl;
+}
+~weapon()
+{
+    delete[] weaponlist;
+}
+};
+
+class enemy;
+
+class character : public player{
+protected:
+int level, points;
+string experience;
+
+public:
+character(int id, string name) : player(id,name)
+{
+    level = 0;
+    points = 0;
+    experience = "Beginner";
+}
+void levelUp()
+{
+    level++;
+    if(experience=="Beginner")
+    experience="Intermedite";
+    else if(experience=="Intermedite")
+    experience="Advanced";
+    else if(experience=="Advanced")
+    experience="Expert";
+}
+
+void playGame(weapon& w,enemy& e);
+void displayStats()
+{
+    cout<<"\nCharacter stats: "<<endl;
+    cout<<"Health: "<<getHealth()<<endl;
+    cout<<"Level: "<<level<<endl;
+    cout<<"Points: "<<points<<endl;
+    cout<<"Experience: "<<experience<<endl;
+}
+void display()
+{
+    player::display();
+    displayStats();
+}
+};
+
+class enemy : public player{
+protected:
+int damage;
+
+public:
+enemy(int id, string name, int d) : player(id,name)
+{
+    do{
+        if(d>0 && d<11)
+        {
+            damage = d;
+            break;
+        }
+        else{
+            cout<<"Enemy damage can be in range 1-10, please enter correctly: ";
+            cin>>d;
+        }
+    }while(1);
+}
+void attack(weapon& w,character& c)
+{
+    w.use();
+    c.setHealth(-damage);
+    cout<<"\nDamage successful!"<<endl;
+}
+void display()
+{
+    player::display();
+    cout<<"\nEnemy stats: "<<endl;
+    cout<<"Health: "<<getHealth()<<endl;
+    cout<<"Damage: "<<damage<<endl;
+}
+};
+
+void character :: playGame(weapon& w,enemy& e)
+{
+    w.use();
+    e.setHealth(-5);
+    points+=10;
+    cout<<"\nAttack successful!"<<endl;
+    cout<<"Enemy health: "<<e.getHealth()<<endl;
+    levelUp();
+    displayStats();
+}
+int main()
+{
+    cout<<"23K2001 - Muzammil\n\n"<<endl;
+    string myweapons[] = {"ak-117","g63","ak47"};
+    weapon w(myweapons,3);
+    character muz(232001,"Muzammil");
+    enemy fast(666420,"Fast University",10);
+
+    int ch;
+    do{
+        cout<<"\n1. Attack enemy.\n2. Attack character.\n3. Show character info.\n4. Show enemy info.\n5. Exit"<<endl;
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+            {
+                muz.playGame(w,fast);
+                break;
+            }
+            case 2:
+            {
+                fast.attack(w,muz);
+                break;
+            }
+            case 3:
+            {
+                muz.display();
+                break;
+            }
+            case 4:
+            {
+                fast.display();
+                break;
+            }
+            case 5:
+            {
+                return 0;
+            }
+
+            default:
+            cout<<"Invalid input, try again!"<<endl;
+        }
+    } while(ch!=5);
+    return 0;
+}
+----------------------------------------------------------------------
+Q1
+//23K2001 Muzammil Q1
+#include<iostream>
+using namespace std;
+
+class securitytool{
+protected:
+int devices;
+string level;
+float cost;
+
+public:
+securitytool(string level,int devices,float cost) : level(level),devices(devices),cost(cost){
+    int c1=0,c2=0;
+    do{
+        if(level=="High" || level=="high" || level=="medium" || level=="Medium" || level=="Low" || level=="low")
+        c1=1;
+        else{
+            cout<<"Please enter correct security level (High/Medium/Low): ";
+            cin>>level;
+            continue;
+        }
+        if(cost>0)
+        c2=1;
+        else{
+            cout<<"Cost can not be <= 0 , please enter valid amount: ";
+            cin>>cost;
+            continue;
+        }
+    }while(c1==0 || c2==0);
+
+}
+
+
+void performScan(){
+cout<<"\nPerforming general security scan.."<<endl;
+cout<<"...devices connected: "<<devices<<endl;
+cout<<"...security level: "<<level<<endl;
+}
+string getLevel()
+{
+    return level;
+}
+};
+
+class firewallTool : public securitytool{
+protected:
+int n;
+int *ports;
+string protocols[6]={"HTTPS","FTP","UDP","ICMP","SSH","SNMP"};
+
+public:
+firewallTool(string level,int devices,float cost) : securitytool(level,devices,cost){
+int c=0;
+do{
+    if(devices<=10)
+    {
+        int p;
+        cout<<"Please input how many ports: ";
+        cin>>p;
+        n=p;
+        ports = new int[n];
+        // cout<<"Please input the Port-# of "<<n<<" ports:";
+        // for(int i=0;i<n;i++)
+        // {
+        //     cin>>ports[i];
+        // }
+        c=1;
+    }
+    else{
+        cout<<"Firewall can operate on only 10 devices at max, kindly input again: ";
+        cin>>devices;
+    }
+}while(c==0);
+
+}
+
+void generateList()
+{
+    cout<<"Enter your student id (XXXX): ";
+    string id;
+    cin>>id;
+    int x,f=0;
+    cout<<"Please specify which digit to select from your id: ";
+    do{
+        cin>>x;
+        if(x!=0)
+        {
+            for(int i=0;i<4;i++)
+            {
+                if((char)(x+'0')==id[i])
+                {
+                    f=1;
+                    break;
+                }
+            }
+            if(f==0)
+            {
+                cout<<"Invalid digit, please enter again! ";
+                continue;
+            }
+        }
+        else
+        {
+            cout<<"Please select any digit except 0! ";
+            continue;
+        }
+    } while(f==0); 
+
+    for(int i=0;i<n;i++)
+    {
+        x++;
+        ports[i] = x;
+    }   
+}
+
+void performScan()
+{
+    securitytool::performScan();
+    if(getLevel()=="High" || getLevel()=="high")
+    {
+        cout<<"...traffic flow from ports:"<<endl;
+        for(int i=0;i<n;i++)
+        {
+            cout<<ports[i]<<" ";
+        }
+        cout<<endl;
+    }
+    else if(getLevel()=="Medium" || getLevel()=="medium")
+    {
+        cout<<"...traffic flow from ports:"<<endl;
+        for(int i=0;i<n;i++)
+        {
+            cout<<ports[i]<<" ";
+        }
+        cout<<"\n + 2 more ports: ";
+        cout<<ports[n-1]+1<<" "<<ports[n-1]+2<<endl;
+    }
+    else if(getLevel()=="Low" || getLevel()=="low")
+    {
+        cout<<"...traffic flow from ports:"<<endl;
+        for(int i=0;i<n;i++)
+        {
+            cout<<ports[i]<<" ";
+        }
+        cout<<"\n + 5 more ports: ";
+        for(int i=1;i<=5;i++)
+        {
+        cout<<ports[n-1]+i<<" ";
+        }
+        cout<<endl;
+    }
+}
+~firewallTool()
+{
+    delete[] ports;
+}
+};
+int main()
+{
+    cout<<"23K2001 - Muzammil\n\n"<<endl;
+    firewallTool f("low",5,25000);
+    f.generateList();
+    f.performScan();
+    return 0;
+}
+
+-------------------------------------------------------------------------------------------
+Q3
+//23K2001 Muzammil Q3
+#include<iostream>
+using namespace std;
+
+class darazpersonData{
+protected:
+string l_name, f_name, address, city, state,zip, phone;
+
+public:
+darazpersonData(string f_name,string l_name, string address,string city,string state,string zip,string phone) : f_name(f_name),l_name(l_name),address(address),city(city),state(state),zip(zip),phone(phone) {}
+void setFname(string f)
+{
+    f_name = f;
+}
+void setLname(string l)
+{
+    l_name = l;
+}
+void setAddress(string a)
+{
+    address = a;
+}
+void setCity(string c)
+{
+    city = c;
+}
+void setState(string s)
+{
+    state = s;
+}
+void setZip(string z)
+{
+    zip = z;
+}
+void setPhone(string p)
+{
+    phone = p;
+}
+string getFname()
+{
+    return f_name;
+}
+string getLname()
+{
+    return l_name;
+}
+string getAddress()
+{
+    return address;
+}
+string getCity()
+{
+    return city;
+}
+string getState()
+{
+    return state;
+}
+string getZip()
+{
+    return zip;
+}
+string getPhone()
+{
+    return phone;
+}
+};
+
+class customerData :  public darazpersonData{
+protected:
+int num, loyalty;
+
+public:
+customerData(string f_name,string l_name, string address,string city,string state,string zip,string phone,int points) : darazpersonData(f_name,l_name,address,city,state,zip,phone) {
+    do{
+        if(points>=0)
+        {
+            loyalty = points;
+            break;
+        }
+        else
+        {
+            cout<<"Loyalty points cannot be negative, input again: ";
+            cin>>points;
+        }
+    }while(1);
+    int *p = &num;
+    num = (int)p;
+}
+void setLoyalty(int n)
+{
+    loyalty = n;
+}
+int getLoyalty()
+{
+    return loyalty;
+}
+int getNum()
+{
+    return num;
+}
+};
+
+class loyaltyProgram : public customerData{
+protected:
+
+public:
+loyaltyProgram(string f_name,string l_name, string address,string city,string state,string zip,string phone,int points) : customerData(f_name,l_name,address,city,state,zip,phone,points){}
+void addPoints(int ps)
+{
+    if(ps<0)
+    cout<<"Points cannot be <0 !!!"<<endl;
+    else{
+    setLoyalty(getLoyalty()+ps);
+    cout<<ps<<" points added for customer#"<<getNum()<<" "<<endl;
+    displayPoints();
+    }
+}
+void redeemPoints(int ps)
+{
+    if(ps<0)
+    cout<<"Points cannot be <0 !!!"<<endl;
+    else if(ps>getLoyalty())
+    cout<<"Not enough points for this customer."<<endl;
+    else{
+    setLoyalty(getLoyalty()-ps);
+    cout<<ps<<" points redeemed for customer#"<<getNum()<<" "<<endl;
+    displayPoints();
+    }
+}
+void displayPoints()
+{
+    cout<<"Current Loyalty points available for Customer: ";
+    cout<<getFname()<<" "<<getLname()<<" -> "<<getLoyalty()<<endl;
+}
+
+};
+int main()
+{
+    cout<<"23K2001 - Muzammil\n\n"<<endl;
+
+    loyaltyProgram me("Muzammil","Siddiqui","Block 7","Karachi","Pakistan","75300","+923061234",-1);
+    // customerData c1("Muzammil","Siddiqui","Block 7","Karachi","Pakistan","75300","+923061234",-1);
+
+    // customerData c2("Muzammil","Siddiqui","Block 7","Karachi","Pakistan","75300","+923061234",-1);
+    int ch;
+    cout<<"\n\t\t***WELCOME TO DARAZ.PK***"<<endl;
+    do {
+        cout<<"\n1. Add new customer to loyalty program";
+        cout<<"\n2. Add loyalty points for purchases";
+        cout<<"\n3. Redeem loyalty points for discounts";
+        cout<<"\n4. Display total loyalty points for a customer";
+        cout<<"\n5. Exit";
+        cout<<"\nEnter your choice: ";
+        cin>>ch;
+
+        switch(ch) {
+            case 1: {
+
+                break;
+            }
+            case 2: {
+                cout<<"How many points to add: ";
+                int x;
+                cin>>x;
+                me.addPoints(x);
+                break;
+            }
+            case 3: {
+                cout<<"How many points to redeem: ";
+                int x;
+                cin>>x;
+                me.redeemPoints(x);
+                break;
+            }
+            case 4: {
+                me.displayPoints();
+                break;
+            }
+            case 5: 
+                return 0;
+            default:
+                cout<<"Invalid choice, try again!";
+        }
+    } while(ch != 5);
+    return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------
+Q4: without polymorphism
+//23K2001 Muzammil Q4
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+class post{
+protected:
+string postID;
+int likes,comments,views;
+
+public:
+post(string id, int l,int c,int v) : postID(id),likes(l),comments(c),views(v) {}
+post(){}
+void displayPost()
+{
+    cout<<"----------------------------------------------"<<endl;
+    cout<<"|                                             |"<<endl;
+    cout<<"|    .-. . . .-. .-. .-. .-. .-. .-. .  .     |"<<endl;
+    cout<<"|     |  |\\| `-.  |  |-| |.. |(  |-| |\\/|     |"<<endl;
+    cout<<"|    `-' ' ` `-'  '  ` ' `-' ' ' ` ' '  `     |"<<endl;
+    cout<<"|                                             |"<<endl;
+    cout<<"     Likes: "<<likes;
+    cout<<"   Comments: "<<comments;
+    cout<<"   Views: "<<views<<endl;
+    cout<<"|                                             |"<<endl;
+    cout<<"----------------------------------------------"<<endl;
+}
+void setLikes(int x) { likes = x; }
+void setViews(int x) { views = x; }
+
+int getLikes() { return likes; }
+int getViews() { return views; }
+int getComments() { return comments; }
+string getID() { return postID; }
+
+void addComment(){
+    string c;
+    cout<<"Type: ";
+    cin>>c;
+    comments++;
+    displayPost();
+    cout<<"\nComment added!"<<endl;
+}
+void likePost(){
+    likes++;
+    displayPost();
+    cout<<"\nLiked!"<<endl;
+}
+void addView() { views++; }
+};
+
+class user{
+protected:
+string name, email, pass;
+bool isEncrypted = false;
+int key=0;
+
+public:
+void encryptUserpass() {
+    if(isEncrypted==false){
+        int n = strlen(pass.c_str());
+        key = (int)pass[0];
+        for(int i=0;pass[i]!='\0';i++)
+        {
+            for(int j=i+1;pass[j]!='\0';j++) {
+                if(pass[j]>key)
+                key = pass[j];
+            }
+        }
+        for(int i=0;i<n-1;i++)
+            pass[i] = pass[i] + (key/(i+1));
+        isEncrypted = true;
+    }
+    /*My encryption logic is that key holds the greatest Ascii value from a password string, then I add the current Ascii value of a character
+    with the key divided by (i+1), where i is the loop counter that iterates equal to length of the password string.*/
+    else
+    cout<<"\nPassword for this user is already encrypted!"<<endl;
+}
+string decryptUserpass(){
+    if(isEncrypted==true){
+        int n = strlen(pass.c_str());
+        for(int i=0;i<n-1;i++)
+            pass[i] = pass[i] - (key/(i+1));
+        isEncrypted = false;
+    }
+    /*Decryption is simply reversing the statement, I now subtract the key divided by (i+1) from Ascii value 
+    of the character, by which I get the original Ascii value of the current character.*/
+    else
+    cout<<"\nPassword for this user is not encrypted yet!"<<endl;
+    return pass;
+}
+
+user(string name, string email, string passw) : name(name),email(email),pass(passw) { encryptUserpass(); }
+
+void displayAcc(){
+    cout<<"\nName: "<<name<<endl;
+    cout<<"Email: "<<email<<endl;
+    cout<<"Password: "<<pass<<endl;
+    cout<<"(type 'show' to reveal/type 1 to continue)"<<endl;
+    string x;
+    cin>>x;
+    if(x=="show" ||x=="Show" ||x=="SHOW") {
+        cout<<decryptUserpass()<<endl;
+        encryptUserpass();
+    }
+    else if(x!="1")
+        cout<<"Invalid!"<<endl;
+}
+void likePost(post *p) { p->likePost(); }
+void addComment(post *p) { p->addComment(); }
+
+string getName() { return name; }
+};
+
+class regular : public user{
+private: 
+static const int MAX_Feed = 10;
+static int n;
+post *forRegular[5];
+
+public:
+regular(string name, string email, string pass) : user(name,email,pass) {
+    for(int i =0;i<5;i++)
+    forRegular[i] = nullptr;
+}
+void addtoFeed(post *p) {
+    if(n<MAX_Feed){
+        int f=0;
+        for(int i=0;i<5;i++)
+        {
+            if(forRegular[i]==nullptr)
+            {
+                f=1;
+                forRegular[i] = p;
+                n++;
+                cout<<"\nPosted!"<<endl;
+                break;
+            }
+        }
+        if(f==0)
+        cout<<"\nSorry! Regular users can only post 5 posts."<<endl;
+    }
+    else
+    cout<<"\nMax (10) posts have been added to feed. Cannot add more"<<endl;
+}
+void viewFeed(){
+    int f=0;
+    cout<<"Name: "<<name<<"\tEmail: "<<email<<endl;
+    for(int i=0;i<5;i++)
+    {
+        if(forRegular[i]!=nullptr)
+        {
+            f=1;
+            forRegular[i]->addView();
+            forRegular[i]->displayPost();
+        }
+    }
+    if(f==0)
+    cout<<"\nNo posts to display, please add some first!"<<endl;
+}
+};
+int regular :: n =0;
+
+class business : public user{
+private: 
+int n=0;
+
+public:
+business(string name, string email, string pass) : user(name,email,pass){}
+void promotePost(post *p){
+    if(n<10)
+    {
+        p->setLikes(p->getLikes()*2);
+        p->setViews(p->getViews()*3);
+        cout<<"\nPost promotion successful!"<<endl;
+        p->displayPost();
+        n++;
+    }
+    else
+    cout<<"\nExceeded promotion limit for Business User. (Max 10)"<<endl;
+}
+};
+
+int main()
+{
+    cout<<"23K2001 - Muzammil\n\n"<<endl;
+    cout<<"\t****WELCOME TO INSTAGRAM LITE ULTRA****\n"<<endl;
+    regular muzammil("Muzammil Siddiqui","k232001@nu.edu.pk","abcdef");
+    regular qasim("Qasim Zaidi","qzaidi@gmail.com","mypassword");
+    regular azam("Azam Khan","azamkh2@gmail.com","1234");
+    post p[] = {post("20240328",20,5,85),post("20240106",100,18,400),post("20240220",150,20,215),post("20240305",38,2,190),
+    post("20240321",95,12,390),post("20240330",19,1,80),post("20240215",149,12,490),post("20240224",122,10,590)};
+
+    business subhan("Subhan Ali","alisubhan@yahoo.com","qwerty");
+    business kaleem("Kaleem Ahmed","kaleem@hotmail.com","fastuni");
+
+    int ch;
+    do{
+        cout<<"\n 1. View account details\n 2. View feed\n 3. Add to feed";
+        cout<<"\n 4. Promote post (business users only)\n 5. Like post\n 6. Add comment\n 7. Exit"<<endl;
+        cin>>ch;
+        switch(ch) {
+            case 1:{
+                cout<<"\nGet Account Details for: "<<endl;
+                cout<<"1. "<<muzammil.getName()<<endl;
+                cout<<"2. "<<qasim.getName()<<endl;
+                cout<<"3. "<<azam.getName()<<endl;
+                cout<<"4. "<<subhan.getName()<<endl;
+                cout<<"5. "<<kaleem.getName()<<endl;
+                int x;
+                cin>>x;
+                x == 1 ? muzammil.displayAcc() : x==2 ? qasim.displayAcc() : x==3 ? azam.displayAcc() : x==4? subhan.displayAcc() : kaleem.displayAcc();
+                break;
+            }
+            case 2:{
+                cout<<"\nView feed for: "<<endl;
+                cout<<"1. "<<muzammil.getName()<<endl;
+                cout<<"2. "<<qasim.getName()<<endl;
+                cout<<"3. "<<azam.getName()<<endl;
+                int x;
+                cin>>x;
+                if(x==1)
+                muzammil.viewFeed();
+                else if(x==2)
+                qasim.viewFeed();
+                else if(x==3)
+                azam.viewFeed();
+                else
+                cout<<"Invalid!"<<endl;
+                break;
+            }
+            case 3:{
+                cout<<"\nAdd to feed for: "<<endl;
+                cout<<"1. "<<muzammil.getName()<<endl;
+                cout<<"2. "<<qasim.getName()<<endl;
+                cout<<"3. "<<azam.getName()<<endl;
+                int x,s;
+                cin>>x;
+                cout<<"Select a post: "<<endl;
+                for(int i=0;i<8;i++)
+                    cout<<i+1<<". "<<p[i].getID()<<endl;
+                cin>>s;
+                if(s<=0 || s>8)
+                cout<<"Invalid choice!"<<endl;
+                else if(x==1)
+                muzammil.addtoFeed(&p[s-1]);
+                else if(x==2)
+                qasim.addtoFeed(&p[s-1]);
+                else if(x==3)
+                azam.addtoFeed(&p[s-1]);
+                else
+                cout<<"Invalid!"<<endl;
+                break;
+            }
+            case 4:{
+                cout<<"\nPromote post for: "<<endl;
+                cout<<"1. "<<subhan.getName()<<endl;
+                cout<<"2. "<<kaleem.getName()<<endl;
+                int x,s;
+                cin>>x;
+                cout<<"Select a post: "<<endl;
+                for(int i=0;i<8;i++)
+                    cout<<i+1<<". "<<p[i].getID()<<endl;
+                cin>>s;
+                if(s<=0 || s>8)
+                cout<<"Invalid choice!"<<endl;
+                else if(x==1)
+                subhan.promotePost(&p[s-1]);
+                else if(x==2)
+                kaleem.promotePost(&p[s-1]);
+                else
+                cout<<"Invalid!"<<endl;
+                break;
+                /*Since objects Muzammil, Qasim & Azam are regular users so not mentioned here 
+                as muzammil.promotePost(&p[s-1]) & qasim.promotePost(&p[s-1]) etc will not work.*/
+            }
+            case 5:{
+                cout<<"\nSelect user to like post: "<<endl;
+                cout<<"1. "<<muzammil.getName()<<endl;
+                cout<<"2. "<<qasim.getName()<<endl;
+                cout<<"3. "<<azam.getName()<<endl;
+                cout<<"4. "<<subhan.getName()<<endl;
+                cout<<"5. "<<kaleem.getName()<<endl;
+                int x,s;
+                cin>>x;
+                cout<<"Select a post: "<<endl;
+                for(int i=0;i<8;i++)
+                    cout<<i+1<<". "<<p[i].getID()<<endl;
+                cin>>s;
+                if(s<=0 || s>8)
+                cout<<"Invalid choice!"<<endl;
+                else
+                x == 1 ? muzammil.likePost(&p[s-1]) : x==2 ? qasim.likePost(&p[s-1]) : x==3 ? azam.likePost(&p[s-1]) : x==4? subhan.likePost(&p[s-1]) : kaleem.likePost(&p[s-1]);
+                break;
+            }
+            case 6:{
+                cout<<"\nSelect user to comment on post: "<<endl;
+                cout<<"1. "<<muzammil.getName()<<endl;
+                cout<<"2. "<<qasim.getName()<<endl;
+                cout<<"3. "<<azam.getName()<<endl;
+                cout<<"4. "<<subhan.getName()<<endl;
+                cout<<"5. "<<kaleem.getName()<<endl;
+                int x,s;
+                cin>>x;
+                cout<<"Select a post: "<<endl;
+                for(int i=0;i<8;i++)
+                    cout<<i+1<<". "<<p[i].getID()<<endl;
+                cin>>s;
+                if(s<=0 || s>8)
+                cout<<"Invalid choice!"<<endl;
+                else
+                x == 1 ? muzammil.addComment(&p[s-1]) : x==2 ? qasim.addComment(&p[s-1]) : x==3 ? azam.addComment(&p[s-1]) : x==4? subhan.addComment(&p[s-1]) : kaleem.addComment(&p[s-1]);
+                break;
+            }
+            case 7:
+            return 0;
+            default:
+            cout<<"Invalid choice!"<<endl;
+        }
+    } while(ch!=7);
+    return 0;
+}

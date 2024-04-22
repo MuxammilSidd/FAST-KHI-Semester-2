@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src/include",
+                "${workspaceFolder}/src/include/SDL2",
+                "${workspaceFolder}/src/lib",
+                "${workspaceFolder}/bin",
+                "${workspaceFolder}/src/include/SDL2",
+                "${workspaceFolder}/src/include/SDL2"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\Program Files\\MinGW\\bin\\gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}

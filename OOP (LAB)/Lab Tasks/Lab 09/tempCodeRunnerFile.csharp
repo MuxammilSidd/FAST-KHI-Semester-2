@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+class A{
+    public:
+    void display(){
+        cout<<"A"<<endl;
+    }
+};
+class B:  public A{
+public:
+void display()
+{
+    cout<<"B"<<endl;
+}
+};
+class C:public A{
+public:
+void display()
+{
+    cout<<"C"<<endl;
+}
+};
+class D: public B,public C{
+    public:
+    void display()
+    {
+
+    A::display();
+    B::display();
+    C::display();
+    }
+    // void display()
+    // {
+    //     // cout<<"D"<<endl;
+    // }
+};
+int main()
+{
+    D d1;
+    d1.display();
+    return 0;
+}
