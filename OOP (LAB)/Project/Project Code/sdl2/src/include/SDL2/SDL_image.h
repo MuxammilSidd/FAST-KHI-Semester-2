@@ -29,7 +29,7 @@
 #ifndef SDL_IMAGE_H_
 #define SDL_IMAGE_H_
 
-#include <src/include/SDL2/SDL.h>
+#include "src/include/SDL2/SDL.h"
 #include "src/include/SDL2/SDL_rwops.h"
 #include "src/include/SDL2/SDL_version.h"
 #include "src/include/SDL2/SDL_begin_code.h"
@@ -2238,6 +2238,6 @@ extern DECLSPEC IMG_Animation * SDLCALL IMG_LoadWEBPAnimation_IO(SDL_IOStream *s
 #ifdef __cplusplus
 }
 #endif
-#include <SDL2/SDL_close_code.h>
+#include "SDL_close_code.h"
 
 #endif /* SDL_IMAGE_H_ */

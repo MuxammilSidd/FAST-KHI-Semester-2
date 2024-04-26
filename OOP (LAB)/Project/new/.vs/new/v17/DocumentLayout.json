@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Lenovo\\Desktop\\OOP (LAB)\\Project\\new\\",
+  "WorkspaceRootPath": "C:\\Users\\Lenovo\\Desktop\\Semester Material\\FAST-KHI-Semester-2\\OOP (LAB)\\Project\\new\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A46C14D2-B050-4FF1-B424-54471D9F60C7}|new\\new.vcxproj|C:\\Users\\Lenovo\\Desktop\\OOP (LAB)\\Project\\new\\new\\new.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A46C14D2-B050-4FF1-B424-54471D9F60C7}|new\\new.vcxproj|solutionrelative:new\\new.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Semester Material\\FAST-KHI-Semester-2\\OOP (LAB)\\Project\\new\\new\\new.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:new\\new.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,18 +20,14 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "new.cpp",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\OOP (LAB)\\Project\\new\\new\\new.cpp",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Semester Material\\FAST-KHI-Semester-2\\OOP (LAB)\\Project\\new\\new\\new.cpp",
               "RelativeDocumentMoniker": "new\\new.cpp",
-              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\OOP (LAB)\\Project\\new\\new\\new.cpp",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Semester Material\\FAST-KHI-Semester-2\\OOP (LAB)\\Project\\new\\new\\new.cpp",
               "RelativeToolTip": "new\\new.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-20T22:28:32.86Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
