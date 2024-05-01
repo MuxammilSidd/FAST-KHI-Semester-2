@@ -82,12 +82,12 @@ class Syrup : public medicine{
 };
 class pharmacist{
     public:
-    void searchMedicine(){ }
+    void searchMedicine();
 };
 class counter{
     public:
-    void searchMedicine(){}
-    void updateRevenue(){}
+    void searchMedicine();
+    void updateRevenue();
 };
 int main(){
     cout<<"23K2001 - Muzammil\n\n"<<endl;
