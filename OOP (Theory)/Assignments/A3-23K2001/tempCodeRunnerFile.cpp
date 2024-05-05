@@ -39,11 +39,13 @@ class medicine{
     }
 
     bool operator ==(medicine &m1){
-        if(this->expDate/10000==m1.expDate/10000) //20240501 (yymmdd)
+        if(this->expDate/10000==m1.expDate/10000) //20243001 (yymmdd)
             return 1;
         else
             return 0;
     }
+
+    friend void updateRevenue(medicine &m);
 };
 class Tablet : public medicine{
     protected:
@@ -116,7 +118,7 @@ class counter{
         if(x)
         cout<<"No medicine found with the name provided!"<<endl;
     }
-    void updateRevenue(medicine m){
+    void updateRevenue(medicine &m){
         revenue+=m.getPrice();
         cout<<endl<<"Payment Authorized!"<<endl;
         cout<<"Total Revenue: "<<revenue<<endl;
@@ -126,23 +128,20 @@ int main(){
     cout<<"23K2001 - Muzammil"<<endl;
     Tablet brufen("Brufen Tablets","XXYA4210",50.75,20240101,20240530,1);
     Capsule sevenseas("7 Seas Cod","XZMB3120",30.40,20240220,20240519,80);
-    Syrup acefyl("Acefyl Cough Syrup","XAFQ1278",70.5,20231027,20240814,1);
 
     brufen.display();
     sevenseas.display();
-    acefyl.display();
-
-    cout<<endl<<brufen.getName()<<" and "<<sevenseas.getName();
     if(brufen==sevenseas)
         cout<<"\nExpiring in the same year!"<<endl;
     else
         cout<<"\nExpiry year different!"<<endl;
 
+
     pharmacist p;
     counter c;
-    medicine *supplies[] = {&brufen,&sevenseas,&acefyl};
-    p.searchMedicine(supplies,3,"XZMB3120");
-    c.searchMedicine(supplies,3,"Acefyl Cough Syrup");
-    c.updateRevenue(acefyl);
+    medicine *supplies[] = {&brufen,&sevenseas};
+    p.searchMedicine(supplies,2,"XZMB3120");
+    c.searchMedicine(supplies,2,"Brufen Tablets");
+    c.updateRevenue(brufen);
     return 0;
 }
