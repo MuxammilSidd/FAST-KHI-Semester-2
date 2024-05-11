@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "sdl_dynapi.h": "c",
-        "sdl_mixer.c": "cpp"
-    }
-}
