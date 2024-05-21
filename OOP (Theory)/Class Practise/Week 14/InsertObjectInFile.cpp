@@ -34,7 +34,6 @@ class Employee{
 	int storeEmpl();
 	void viewEmployeeRec();
 	void SearchEmpData(int id);
-	
 };
 int Employee::storeEmpl(){
 	ofstream f;
@@ -44,7 +43,7 @@ int Employee::storeEmpl(){
 	}
 	
 	else {
-	f.open("File1.dat",ios::app);
+	f.open("new_file.txt",ios::binary | ios::app);
 	f.write((char*)this,sizeof(*this));	
 	f.close();
 	return(1);
@@ -53,7 +52,7 @@ int Employee::storeEmpl(){
 }
 void Employee::viewEmployeeRec(){
 	ifstream fin;
-	fin.open("File1.dat",ios::in|ios::binary);
+	fin.open("new_file.txt",ios::in|ios::binary);
 	if(!fin)
 	cout<<"Data not Found";
 	else{
@@ -68,7 +67,7 @@ void Employee::viewEmployeeRec(){
 	}
 void Employee::SearchEmpData(int id){
 	ifstream fin;
-	fin.open("File1.dat",ios::in);
+	fin.open("new_file.txt",ios::in);
 	if(!fin)
 	cout<<"Data not Found";
 	
@@ -76,13 +75,13 @@ void Employee::SearchEmpData(int id){
 	fin.read((char*)this,sizeof(*this));
 	while(!fin.eof()){
 		if(eid==id){
-				cout<<"Data found";
-				showEmpData();
-				
+			cout<<"Data found";
+			showEmpData();		
 		}
 		
 		fin.read((char*)this,sizeof(*this));
 	}
+	cout<<"Data not Found";
 	fin.close();
 	}
 }

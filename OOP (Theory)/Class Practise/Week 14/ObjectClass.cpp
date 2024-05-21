@@ -48,7 +48,7 @@ using namespace std;
                       int count=0;
                       f.open("Student.txt",ios::in|ios::binary);
                       cout<<"\n\tRoll\tName\tMarks\n";
-                      while( (f.read((char*)&Stu,sizeof(Stu))) != NULL ){
+                      while((f.read((char*)&Stu,sizeof(Stu)))){
                       		if(Stu.roll==id){
                       			cout<<"Data Found";
                       			Stu.fetchdata();
