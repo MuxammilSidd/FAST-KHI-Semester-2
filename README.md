@@ -21,6 +21,8 @@ For contributions kindly look [here]()
 
 - [Additional Resources](#-additional-resources)
 
+- [Mistakes I made in my 2nd-Semester!](#-mistakes-i-made-in-my-2nd-semester)
+
 ### 🔗 How to crack your first semester at FAST NUCES!
 - [Time management](#-time-management)
 
@@ -194,3 +196,10 @@ Feeling this repository isn't enough? 😩 Here are all links to repositories an
 - [1st Semester CFD](https://drive.google.com/drive/folders/1i-PO0_YUEPWZsDGkTKotNose_nJnya17?usp=drive_link) - by f223298 (Chiniot-Faisalabad Campus)
 
 Note: All relevant material to FAST NU KHI Campus has been added already from these archives.
+
+## 🔗 Mistakes I made in my 2nd-Semester!
+Here is a bunch of blunders I wish I hadn't made in my second semester at FAST KHI.
+(Hopefully not again)(that's what I said in first semester)
+- Started projects late (after mid02) - thinking the burden would be bearable.
+- Spent a lot of unrequired time on assignments.
+(later realizing those were graded solely based on timely submission)
