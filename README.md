@@ -95,61 +95,46 @@ pata chale toh mujhe bhi bata dena pls
 - []()
 
 🔗 Resources:
-- [OOP Spring'21 Drive](https://drive.google.com/drive/folders/1J09oUOQ7AwRDtfBlwzJgpz5cy5ZdyXpk?usp=drive_link) - OOP (CS-217) complete semester drive, access with NU-ID.
-- []() - 
+- [studocu - Object-Oriented Programming (CS1004)](https://www.studocu.com/row/course/national-university-of-computer-and-emerging-sciences/object-oriented-programming/5064689) - Explore miscellaneous resources from all FAST campuses.
 
 
 🔗 Google Drives:
-- []() - 
-
-- []() - 
-
-- []() - 
+- [OOP Spring'21 Drive](https://drive.google.com/drive/folders/1J09oUOQ7AwRDtfBlwzJgpz5cy5ZdyXpk?usp=drive_link) - OOP (CS-217) complete semester drive, access with NU-ID.
 
 ---
 
 ### 📌 Multivariable Calculus:
 
 🔗 Useful Youtube Playlists:
-- []()
+- [CAL-III by Professor Leonard](https://youtube.com/playlist?list=PLDesaqWTN6ESk16YRmzuJ8f6-rnuy0Ry7&si=P1vkYIpLVt3BGQBo)
 
 🔗 Resources:
-- []() - Vast pool of FAST NU resources. Note: All content is from LHR Campus.
+- [studocu - Multivariable Calculus (MT-1007)](https://www.studocu.com/row/course/national-university-of-computer-and-emerging-sciences/multivariable-calculus/6927817) - Explore miscellaneous resources from all FAST campuses.
 
 🔗 Google Drives:
-- []()
 
 ---
 
 ### 📌 Digital Logic & Design:
 
 🔗 Useful Youtube Playlists:
-- Organic Chemistry Tutor 
-  <a href="https://www.youtube.com/@TheOrganicChemistryTutor" style="vertical-align:middle; display:inline-block;">
-    <img src="https://yt3.googleusercontent.com/ytc/AIdro_lOQikQsmqQS3dG9VBvbJ03Eqqw7NshUvDNorj5UAZL6M0=s160-c-k-c0x00ffffff-no-rj" alt="Organic Chemistry Tutor" width="25" height="25" style="vertical-align:middle; text-decoration:none; border:none;">
-  </a>
-  <ul>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-  </ul>
-- [CAL II by Professor Leonard]()
-- []()
+- [Digital Electronics by Neso Academy](https://youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm&si=gxFRLwF72r9SKstx)
+- [DLD Complete Course Playlist](https://youtube.com/playlist?list=PLR5MHY0BGp06JgRH6lGOJi7kRdlG83mRa&si=6RTrV2shh_E2O1LU)
 
-- [CAL I Anton 10th Ed. Solution Videos](https://youtube.com/playlist?list=PL3ynuUP4kvJjWvjXmAEYocy1oJ4Yel6aU&si=rjRncjy3iuVeajcx)
 
 🔗 Resources:
-- []() - Vast pool of FAST NU resources. Note: All content is from LHR Campus.
+- [studocu - Digital Logic Design (EE 227)](https://www.studocu.com/row/course/national-university-of-computer-and-emerging-sciences/digital-logic-design/4007507) - Explore miscellaneous resources from all FAST campuses.
 
 🔗 Google Drives:
-- []()
 
 ---
 
 ### 📌 Ideology & Constitution of Pakistan:
 
+🔗 Useful Youtube Playlists:
+- [History of Pakistan by Dekho Suno Jano](https://youtube.com/playlist?list=PLYt5jguM4dGwPAeLXmNorJV559crcMvuN&si=LwMA_LQEHYupHH1V)
+
 🔗 Resources:
-- []() - Vast pool of FAST NU resources. Note: All content is from LHR Campus.
 
 🔗 Google Drives:
 - []()
@@ -159,7 +144,6 @@ pata chale toh mujhe bhi bata dena pls
 ### 📌 Expository Writing:
 
 🔗 Resources:
-- [](https://www.wondar.site/subject/) - Vast pool of FAST NU resources. Note: All content is from LHR Campus.
 
 🔗 Google Drives:
 - []()
