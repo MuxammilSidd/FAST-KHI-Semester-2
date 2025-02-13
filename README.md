@@ -4,8 +4,7 @@
 Welcome FASTians! Here you can find relevant material for your second semester (BSCS) at FAST NUCES Karachi. A little effort by my side to boost your academic journey. ✨
 Don't forget to star this repo if you find it useful! ⭐ 
 
-For any queries/improvement feel free to contact me on k232001@nu.edu.pk
-For contributions kindly look [here]()
+For any queries/improvement feel free to contact me on k232001@nu.edu.pk<br>For contributions kindly look [here](https://github.com/MuxammilSidd/FAST-KHI-Semester-1/blob/main/CONTRIBUTING.md).
 
 ### 🔗 Links to other semester repositories
 - [1st Semester KHI](https://github.com/MuxammilSidd/FAST-KHI-Semester-1)
@@ -93,6 +92,9 @@ pata chale toh mujhe bhi bata dena pls
 🔗 Useful Youtube Playlists:
 - []()
 - []()
+
+🔗 Projects:
+- [Cafe-Digital-System](https://github.com/BilalAli6/Cafe-Digital-System-OOP) - OOP project by Bilal Ali (FAST ISB).
 
 🔗 Resources:
 - [studocu - Object-Oriented Programming (CS1004)](https://www.studocu.com/row/course/national-university-of-computer-and-emerging-sciences/object-oriented-programming/5064689) - Explore miscellaneous resources from all FAST campuses.
